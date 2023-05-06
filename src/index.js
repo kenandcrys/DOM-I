@@ -39,4 +39,70 @@ const siteContent = { // DO NOT CHANGE THIS OBJECT
   },
 };
 
-console.log('project wired!')
+
+// Header
+
+const logoImg = document.querySelector(`#logo-img`);
+logoImg.src = siteContent.images[`logo-img`];
+
+const navs = document.querySelectorAll(`a`);
+navs.forEach((nav, i) => {
+  nav.classList.add(`italic`);
+  nav.textContent = siteContent.nav[`nav-item-${i + 1}`];
+})
+
+// H1 and Button
+
+const onlyH1 = document.querySelector(`.cta-text h1`);
+onlyH1.textContent = siteContent.cta[`h1`];
+
+const button1 = document.querySelector(`.cta-text button`);
+button1.textContent = siteContent.cta[`button`];
+
+// Body Images
+
+const snippet = document.querySelector(`#cta-img`);
+snippet.src = siteContent.images[`cta-img`];
+
+const middleImg = document.querySelector(`#middle-img`);
+middleImg.src = siteContent.images[`accent-img`]
+
+// H4's
+
+const h4Elements = document.querySelectorAll(`.text-content h4`);
+const pElements = document.querySelectorAll(`.text-content p`)
+const values = Object.values(siteContent["main-content"]);
+
+for (let i = 0; i < values.length; i++) {
+  if (i % 2 === 0) {
+    h4Elements[i / 2].textContent = values[i];
+  } else {
+    pElements[Math.floor(i / 2)].textContent = values[i];
+  }
+}
+
+
+// contact
+
+// Select the h4 element with a class of "contact"
+const contactHeading = document.querySelector('.contact h4');
+
+// Update the text content of the h4 element using the "contact-h4" key from siteContent
+contactHeading.textContent = siteContent.contact['contact-h4'];
+
+// Select the p elements with a class of "contact"
+const contactInfo = document.querySelectorAll('.contact p');
+
+// Loop through the p elements and update their text content using the keys from siteContent
+contactInfo.forEach((p, i) => {
+  p.textContent = siteContent.contact[Object.keys(siteContent.contact)[i + 1]];
+});
+
+
+const footer = document.querySelector(`footer a`);
+footer.textContent = siteContent.footer.copyright;
+footer.className = `bold`;
+
+
+
+// end
